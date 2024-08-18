@@ -1,2 +1,10 @@
-"use strict";
-console.log("Hello");
+import Weapon from "./clases/Weapon.js";
+import Player from "./clases/Player.js";
+let zweihander = new Weapon("zweihander", 35);
+let undead = new Player();
+let knight = new Player("Knight", zweihander);
+console.log(undead.display());
+console.log(knight.display());
+knight.attack(undead);
+console.log(undead.display());
+undead.drinkHealthPotion(25);
