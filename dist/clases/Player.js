@@ -19,7 +19,7 @@ class Player {
     }
     attack(target) {
         console.log("---------------------------------------");
-        console.log(`${this.m_name} attacks ${target.getName()}`);
+        console.log(`${this.m_name} attacks ${target.getName()} using ${this.m_weapon.getName()}`);
         if (target.isAlive()) {
             target.recieveDamage(this.m_weapon.getDamage());
         }

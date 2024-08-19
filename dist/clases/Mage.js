@@ -1,17 +1,18 @@
 import Player from "./Player.js";
-import Weapon from "./Weapon.js";
+import MagicWeapon from "./MagicWeapon.js";
 export default class Mage extends Player {
-    constructor(m_name = "Mage", m_weapon = new Weapon("Wand", 10)) {
-        super(m_name, m_weapon);
+    constructor(name = "Mage", magicWeapon = new MagicWeapon()) {
+        super(name);
         this.m_mana = 100;
+        this.m_magic_weapon = magicWeapon;
     }
-    attack(target) {
+    attackMagic(target) {
         console.log("---------------------------------------");
-        console.log(`${this.m_name} attacks ${target.getName()}`);
+        console.log(`${this.m_name} attacks ${target.getName()} using ${this.m_magic_weapon.getName()}`);
         if (target.isAlive()) {
             if (this.isEnoughMana()) {
                 this.consumeMana();
-                target.recieveDamage(this.m_weapon.getDamage());
+                target.recieveDamage(this.m_magic_weapon.getDamage());
             }
             else {
                 console.log(`Not enough mana (${this.m_mana})`);
@@ -22,11 +23,11 @@ export default class Mage extends Player {
         }
     }
     isEnoughMana() {
-        return this.m_mana >= this.m_weapon.getDamage();
+        return this.m_mana >= this.m_magic_weapon.getConsumeMana();
     }
     consumeMana() {
-        this.m_mana -= this.m_weapon.getDamage();
-        console.log(`${this.m_name} - ${this.m_weapon.getDamage()} mana (new mana: ${this.m_mana})`);
+        this.m_mana -= this.m_magic_weapon.getConsumeMana();
+        console.log(`${this.m_name} - ${this.m_magic_weapon.getConsumeMana()} mana (new mana: ${this.m_mana})`);
     }
     drinkManaPotion(mana_potion_quantity) {
         console.log("---------------------------------------");
@@ -47,6 +48,7 @@ export default class Mage extends Player {
 			---------------------------------------
 			${this.m_name} HP: ${this.m_health} | Mana: ${this.m_mana}
 			Weapon: ${this.m_weapon.displayWeapon()}
+			Magical Weapon: ${this.m_magic_weapon.displayWeapon()}
 			---------------------------------------
 		`;
     }
