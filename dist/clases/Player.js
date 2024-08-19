@@ -1,25 +1,31 @@
 import Weapon from "./Weapon.js";
-export default class Player {
-    constructor(m_name = "Undead", m_weapon = new Weapon(), m_health = 100) {
-        this.m_name = m_name;
-        this.m_weapon = m_weapon;
-        this.m_health = m_health;
+class Player {
+    constructor(name = "Undead", weapon = new Weapon()) {
+        this.m_name = name;
+        this.m_weapon = weapon;
+        this.m_health = 100;
+        Player.s_players_spawned++;
     }
     recieveDamage(damage_recieved) {
-        if (this.m_health > 0) {
-            this.m_health = this.m_health - damage_recieved;
-            console.log(`${this.m_name} recieves ${damage_recieved} damage`);
-            if (this.m_health < 0) {
-                this.m_health = 0;
-            }
+        this.m_health = this.m_health - damage_recieved;
+        if (this.m_health <= 0) {
+            this.m_health = 0;
+            Player.s_players_spawned--;
         }
-        else {
-            console.log(`${this.m_name} is already dead`);
+        console.log(`${this.m_name} recieves ${damage_recieved} damage, new hp: ${this.m_health}`);
+        if (this.m_health == 0) {
+            console.log(Player.sm_displayPlayersSpawned());
         }
     }
     attack(target) {
+        console.log("---------------------------------------");
         console.log(`${this.m_name} attacks ${target.getName()}`);
-        target.recieveDamage(this.m_weapon.getDamage());
+        if (target.isAlive()) {
+            target.recieveDamage(this.m_weapon.getDamage());
+        }
+        else {
+            console.log(`${target.getName()} is already dead`);
+        }
     }
     drinkHealthPotion(health_potion_quantity) {
         if (this.m_health < 100) {
@@ -45,4 +51,10 @@ export default class Player {
     getName() {
         return this.m_name;
     }
+    static sm_displayPlayersSpawned() {
+        return `Players Alive : ${this.s_players_spawned}`;
+    }
 }
+// Static memebers:
+Player.s_players_spawned = 0;
+export default Player;

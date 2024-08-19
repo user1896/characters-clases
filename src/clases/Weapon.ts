@@ -10,9 +10,9 @@ export default class Weapon{
 	}
 
 	displayWeapon(): string{
-		return `${this.m_weapon_name} ${this.m_damage} damage`
+		return `${this.m_weapon_name} => ${this.m_damage} damage`
 	}
-	
+
 	getDamage(): number{
 		return this.m_damage
 	}

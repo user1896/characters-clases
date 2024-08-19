@@ -8,7 +8,7 @@ export default class Weapon {
         this.m_damage = damage;
     }
     displayWeapon() {
-        return `${this.m_weapon_name} ${this.m_damage} damage`;
+        return `${this.m_weapon_name} => ${this.m_damage} damage`;
     }
     getDamage() {
         return this.m_damage;
