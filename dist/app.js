@@ -1,12 +1,13 @@
 import Weapon from "./clases/Weapon.js";
+import MagicWeapon from "./clases/MagicWeapon.js";
 import Player from "./clases/Player.js";
 import Mage from "./clases/Mage.js";
-import MagicWeapon from "./clases/MagicWeapon.js";
+import Warrior from "./clases/Warrior.js";
 let zweihander = new Weapon("Zweihander", 35);
 let staff = new MagicWeapon("Legendary Staff", 55, 35);
 let undead = new Player("Undead-1");
 let undead2 = new Player("Undead-2");
-let knight = new Player("Knight", zweihander);
+let knight = new Warrior("Knight", 1.5, zweihander);
 let medivh = new Mage("Medivh", staff);
 console.log(undead.display());
 console.log(knight.display());

@@ -1,7 +1,8 @@
 import Weapon from "./clases/Weapon.js";
+import MagicWeapon from "./clases/MagicWeapon.js";
 import Player from "./clases/Player.js";
 import Mage from "./clases/Mage.js";
-import MagicWeapon from "./clases/MagicWeapon.js";
+import Warrior from "./clases/Warrior.js";
 
 let zweihander: Weapon = new Weapon("Zweihander", 35)
 
@@ -11,7 +12,7 @@ let undead: Player = new Player("Undead-1")
 
 let undead2: Player = new Player("Undead-2")
 
-let knight: Player = new Player("Knight", zweihander)
+let knight: Warrior = new Warrior("Knight", 1.5, zweihander)
 
 let medivh: Mage = new Mage("Medivh", staff)
 

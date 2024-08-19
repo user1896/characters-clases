@@ -10,6 +10,7 @@ export default class Mage extends Player {
 		magicWeapon: MagicWeapon = new MagicWeapon()
 	){
 		super(name)
+		this.m_class = "Mage"
 		this.m_mana = 100
 		this.m_magic_weapon = magicWeapon
 	}
@@ -59,7 +60,9 @@ export default class Mage extends Player {
 	display(): string {
 		return `
 			---------------------------------------
-			${this.m_name} HP: ${this.m_health} | Mana: ${this.m_mana}
+			${this.m_name}
+			Class: ${this.m_class}
+			HP: ${this.m_health} | Mana: ${this.m_mana}
 			Weapon: ${this.m_weapon.displayWeapon()}
 			Magical Weapon: ${this.m_magic_weapon.displayWeapon()}
 			---------------------------------------

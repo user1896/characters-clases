@@ -3,6 +3,7 @@ import MagicWeapon from "./MagicWeapon.js";
 export default class Mage extends Player {
     constructor(name = "Mage", magicWeapon = new MagicWeapon()) {
         super(name);
+        this.m_class = "Mage";
         this.m_mana = 100;
         this.m_magic_weapon = magicWeapon;
     }
@@ -46,7 +47,9 @@ export default class Mage extends Player {
     display() {
         return `
 			---------------------------------------
-			${this.m_name} HP: ${this.m_health} | Mana: ${this.m_mana}
+			${this.m_name}
+			Class: ${this.m_class}
+			HP: ${this.m_health} | Mana: ${this.m_mana}
 			Weapon: ${this.m_weapon.displayWeapon()}
 			Magical Weapon: ${this.m_magic_weapon.displayWeapon()}
 			---------------------------------------

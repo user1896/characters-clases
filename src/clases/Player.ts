@@ -1,6 +1,7 @@
 import Weapon from "./Weapon.js";
 
 export default class Player{
+	protected m_class: string;
 	protected m_name: string;
 	protected m_weapon: Weapon;
 	protected m_health: number;
@@ -9,6 +10,7 @@ export default class Player{
 		name: string = "Undead",
 		weapon: Weapon = new Weapon()
 	){
+		this.m_class = "Unclassed"
 		this.m_name = name
 		this.m_weapon = weapon
 		this.m_health = 100
@@ -46,6 +48,7 @@ export default class Player{
 			if(this.m_health > 100) {
 				this.m_health = 100
 			}
+			console.log("---------------------------------------")
 			console.log(`${this.m_name} drank a health potion that retores ${health_potion_quantity} hp.`)
 			console.log(`${this.m_name} new hp: ${this.m_health}`)
 		}
@@ -58,7 +61,9 @@ export default class Player{
 	display(): string {
 		return `
 			---------------------------------------
-			${this.m_name} HP: ${this.m_health}
+			${this.m_name}
+			Class: ${this.m_class}
+			HP: ${this.m_health}
 			Weapon: ${this.m_weapon.displayWeapon()}
 			---------------------------------------
 		`
